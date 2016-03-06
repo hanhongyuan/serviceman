@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: discovery
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+     config:
+        uri: http://registry:8761
