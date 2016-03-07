@@ -25,6 +25,7 @@
         <module name="circuitbreaker" />
         <module name="configserver" />
         <module name="gateway" />
+        <module name="person" />
         <module name="registry" />
         <module name="serviceman" />
       </profile>
@@ -35,12 +36,21 @@
         <processorPath useClasspath="true" />
         <module name="consulservice" />
       </profile>
+      <profile default="false" name="Annotation profile for consul-microservice" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="consul-microservice" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="circuitbreaker" target="1.8" />
       <module name="configserver" target="1.8" />
+      <module name="consul-microservice" target="1.8" />
       <module name="consulservice" target="1.8" />
       <module name="gateway" target="1.8" />
+      <module name="person" target="1.8" />
       <module name="registry" target="1.8" />
       <module name="serviceman" target="1.8" />
     </bytecodeTargetLevel>

@@ -1,17 +1,16 @@
-package com.dstvdm.gateway;
+package com.dstvdm.person;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.sidecar.EnableSidecar;
-
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
-@EnableSidecar
 @EnableDiscoveryClient
-public class GatewayApplication {
+@EnableEurekaClient
+public class PersonApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GatewayApplication.class, args);
+		SpringApplication.run(PersonApplication.class, args);
 	}
 }

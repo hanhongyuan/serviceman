@@ -1,24 +1,17 @@
 server:
-  port: 8000
-
-ribbon:
-  ServerListRefreshInterval: 1000
+  port: 11000
 
 endpoints:
-  health:
-    sensitive: false
   restart:
     enabled: true
   shutdown:
     enabled: true
-
-logging:
-  level:
-    org.springframework.cloud.consul: DEBUG
+  health:
+    sensitive: false
 
 eureka:
   instance:
-    hostname: consulservice
+    hostname: person
   client:
     registerWithEureka: true
     fetchRegistry: true
