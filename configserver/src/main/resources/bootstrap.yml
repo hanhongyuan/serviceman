@@ -10,11 +10,11 @@ eureka:
     healthCheckUrlPath: ${management.context-path}/health
     hostname: configServer
     preferIpAddress: true
-    defaultZone: http://127.0.0.1:8761/eureka/
+    defaultZone: http://127.0.0.1:${server.port}/eureka/
   client:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://127.0.0.1:8761/eureka/
+      defaultZone: http://127.0.0.1:${server.port}/eureka/
 info:
   description: Config Server
