@@ -28,10 +28,18 @@
         <module name="registry" />
         <module name="serviceman" />
       </profile>
+      <profile default="false" name="Annotation profile for consulservice" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="consulservice" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="circuitbreaker" target="1.8" />
       <module name="configserver" target="1.8" />
+      <module name="consulservice" target="1.8" />
       <module name="gateway" target="1.8" />
       <module name="registry" target="1.8" />
       <module name="serviceman" target="1.8" />
