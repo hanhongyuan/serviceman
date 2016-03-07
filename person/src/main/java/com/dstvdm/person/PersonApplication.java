@@ -1,16 +1,17 @@
 package com.dstvdm.person;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
-@EnableDiscoveryClient
-@EnableEurekaClient
+@EnableAutoConfiguration
+@ComponentScan
 public class PersonApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PersonApplication.class, args);
-	}
+    public static void main(String... args) {
+        new SpringApplicationBuilder()
+                .sources(PersonApplication.class)
+                .showBanner(false)
+                .run(args);
+    }
 }
