@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: consulservice
+  cloud:
+    consul:
+        host: consulagent
