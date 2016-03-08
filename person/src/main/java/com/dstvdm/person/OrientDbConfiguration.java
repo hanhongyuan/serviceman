@@ -34,7 +34,7 @@ public class OrientDbConfiguration {
     public OrientObjectDatabaseFactory factory() {
         OrientObjectDatabaseFactory factory = new OrientObjectDatabaseFactory();
 
-        factory.setUrl("remote:localhost/bamf");
+        factory.setUrl("remote:localhost/person");
         factory.setUsername("admin");
         factory.setPassword("admin");
 

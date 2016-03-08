@@ -22,11 +22,12 @@ public class PersonRepository  {
     private OrientGraph graph;
 
     public String addPerson(Person person) {
-        OrientVertexType vertexType = graph.getVertexType("Person");
-        if(vertexType == null) {
+        try {
+            OrientVertexType vertexType = graph.getVertexType("Person");
+        } catch (NullPointerException e) {
             graph.createVertexType("Person");
-
         }
+        OrientVertexType vertexType = graph.getVertexType("Person");
         Vertex p = graph.addVertex("Person", "Person");
         Object id = p.getId();
 
@@ -37,7 +38,9 @@ public class PersonRepository  {
         p.setProperty("title", person.getTitle());
         p.setProperty("image", person.getImage());
         p.setProperty("homepage", person.getHomepage());
-        p.setProperty("knows", person.getKnows());
+
+        // we use the knows array to create edges outgoing to other people
+        //p.setProperty("knows", person.getKnows());
 
         graph.commit();
 
