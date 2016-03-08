@@ -22,8 +22,6 @@ import java.util.List;
 public class PersonRepository  {
 
     private OrientGraphFactory factory = new OrientGraphFactory("remote:localhost/person", "admin", "admin").setupPool(1, 10);
-    //@Autowired
-    //private OrientGraphFactory factory;
 
     public String addPerson(Person person) {
         OrientGraph graph = factory.getTx();
@@ -52,46 +50,62 @@ public class PersonRepository  {
         return id.toString();
     }
 
-    public Iterable<Vertex> findByFirstName(String firstName) {
+    public List<Person> findByFirstName(String firstName) {
+        List<Person> people = new ArrayList<Person>();
         OrientGraph graph = factory.getTx();
-        Iterable<Vertex> data = graph.getVertices("firstName", firstName);
-        graph.commit();
-        //graph.shutdown();
-        return data;
+        for (Vertex v : graph.getVertices("firstName", firstName)) {
+            Person p = personTranslator(v);
+            people.add(p);
+        }
+        graph.shutdown();
+        return people;
     }
 
-    public Iterable<Vertex> findByEmailAddress(String email) {
+    public List<Person> findByEmailAddress(String email) {
+        List<Person> people = new ArrayList<Person>();
         OrientGraph graph = factory.getTx();
-        Iterable<Vertex> data = graph.getVertices("email", email);
-        //graph.shutdown();
-        return data;
+        for (Vertex v : graph.getVertices("email", email)) {
+            Person p = personTranslator(v);
+            people.add(p);
+        }
+        graph.shutdown();
+        return people;
     }
 
-    public Iterable<Vertex> findByLastName(String lastName) {
+    public List<Person> findByLastName(String lastName) {
+        List<Person> people = new ArrayList<Person>();
         OrientGraph graph = factory.getTx();
-        Iterable<Vertex> data = graph.getVertices("lastName", lastName);
-        //graph.shutdown();
-        return data;
+        for (Vertex v : graph.getVertices("lastName", lastName)) {
+            Person p = personTranslator(v);
+            people.add(p);
+        }
+        graph.shutdown();
+        return people;
     }
 
     public List<Person> findAll() {
         List<Person> people = new ArrayList<Person>();
         OrientGraph graph = factory.getTx();
         for (Vertex v : graph.getVertices()) {
-            Person p = new Person();
-            p.setAge(v.getProperty("age"));
-            p.setEmail(v.getProperty("email"));
-            p.setFirstName(v.getProperty("firstName"));
-            p.setHomepage(v.getProperty("homepage"));
-            p.setId(v.getId().toString());
-            p.setImage(v.getProperty("image"));
-            p.setKnows(v.getProperty("knows"));
-            p.setLastName(v.getProperty("lastName"));
-            p.setTitle(v.getProperty("title"));
+            Person p = personTranslator(v);
             people.add(p);
-            // System.out.println(v.getProperty("firstName").toString());
         }
         graph.shutdown();
         return people;
+    }
+
+    private Person personTranslator(Vertex v) {
+        Person p = new Person();
+        p.setAge(v.getProperty("age"));
+        p.setEmail(v.getProperty("email"));
+        p.setFirstName(v.getProperty("firstName"));
+        p.setHomepage(v.getProperty("homepage"));
+        p.setId(v.getId().toString());
+        p.setImage(v.getProperty("image"));
+        p.setKnows(v.getProperty("knows"));
+        p.setLastName(v.getProperty("lastName"));
+        p.setTitle(v.getProperty("title"));
+
+        return p;
     }
 }

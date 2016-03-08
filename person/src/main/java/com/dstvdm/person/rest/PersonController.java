@@ -6,7 +6,6 @@ package com.dstvdm.person.rest;
 
 import com.dstvdm.person.model.Person;
 import com.dstvdm.person.repository.PersonRepository;
-import com.tinkerpop.blueprints.Vertex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,18 +27,18 @@ public class PersonController {
     }
 
     @RequestMapping("/findByFirstName")
-    public Iterable<Vertex> findByFirstName(@RequestParam String firstName) {
+    public List<Person> findByFirstName(@RequestParam String firstName) {
         return repository.findByFirstName(firstName);
     }
 
     @RequestMapping("/findByLastName")
-    public Iterable<Vertex> findByLastName(@RequestParam String lastName) {
+    public List<Person> findByLastName(@RequestParam String lastName) {
         return repository.findByLastName(lastName);
     }
 
     @RequestMapping("/findByEmail")
-    public Iterable<Vertex> findByEmail(@RequestParam String email) {
-        return repository.findByFirstName(email);
+    public List<Person> findByEmail(@RequestParam String email) {
+        return repository.findByEmailAddress(email);
     }
 
     @RequestMapping(method = RequestMethod.POST)
