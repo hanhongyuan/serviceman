@@ -5,6 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.orientechnologies.orient.core.annotation.OId;
 import com.orientechnologies.orient.core.annotation.OVersion;
 
+import java.net.URI;
+import java.net.URL;
+import java.util.List;
+
 /**
  * Created by pscot on 3/2/2016.
  */
@@ -22,6 +26,17 @@ public class Person {
     private String lastName;
 
     private String email;
+
+    private String title;
+
+    private URI image;
+
+    private List<Person> knows;
+
+    private int age;
+
+    private URL homepage;
+
 
     public String getEmail() {
         return email;
@@ -47,8 +62,6 @@ public class Person {
         this.firstName = firstName;
     }
 
-
-
     public String getLastName() {
         return lastName;
     }
@@ -58,4 +71,43 @@ public class Person {
     }
 
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public URI getImage() {
+        return image;
+    }
+
+    public void setImage(URI image) {
+        this.image = image;
+    }
+
+    public List<Person> getKnows() {
+        return knows;
+    }
+
+    public void setKnows(List<Person> knows) {
+        this.knows = knows;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public URL getHomepage() {
+        return homepage;
+    }
+
+    public void setHomepage(URL homepage) {
+        this.homepage = homepage;
+    }
 }

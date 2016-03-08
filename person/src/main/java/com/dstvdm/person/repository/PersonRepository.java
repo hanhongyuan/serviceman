@@ -32,6 +32,13 @@ public class PersonRepository  {
 
         p.setProperty("firstName", person.getFirstName());
         p.setProperty("lastName", person.getLastName());
+        p.setProperty("email", person.getEmail());
+        p.setProperty("age", person.getAge());
+        p.setProperty("title", person.getTitle());
+        p.setProperty("image", person.getImage());
+        p.setProperty("homepage", person.getHomepage());
+        p.setProperty("knows", person.getKnows());
+
         graph.commit();
 
         return id.toString();
