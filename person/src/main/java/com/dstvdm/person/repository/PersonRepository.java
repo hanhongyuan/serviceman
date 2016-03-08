@@ -43,7 +43,6 @@ public class PersonRepository  {
         //p.setProperty("knows", person.getKnows());
 
         graph.commit();
-
         return id.toString();
     }
 
