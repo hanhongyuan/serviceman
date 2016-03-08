@@ -10,6 +10,8 @@ import com.tinkerpop.blueprints.Vertex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by pscot on 3/2/2016.
  */
@@ -21,7 +23,7 @@ public class PersonController {
     private PersonRepository repository;
 
     @RequestMapping(method = RequestMethod.GET)
-    public Iterable<Vertex> findAllPersons() {
+    public List<Person> findAllPersons() {
         return repository.findAll();
     }
 
