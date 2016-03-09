@@ -43,7 +43,11 @@ public class PersonController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String addPerson(@RequestBody Person person) {
-        return repository.addPerson(person);
+        // check that email is not yet in use, else throw EemailAlreadyInUseException
+        String email = person.getEmail();
+        if (repository.findByEmailAddress(email).isEmpty()) {
+            return repository.addPerson(person);
+        } else throw new EmailAlreadyInUseException();
     }
 
 
