@@ -86,5 +86,11 @@ public class PersonController {
         return repository.breakKnows(p1, p2);
     }
 
+    @RequestMapping("/listRelationships")
+    public List<Person> listRels(@RequestBody String id) {
+        Person p = repository.findByOId(id);
+        return repository.listRelationships(p);
+    }
+
 
 }

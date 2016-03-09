@@ -194,4 +194,17 @@ public class PersonRepository  {
             graph.shutdown();
         }
     }
+
+    public List<Person> listRelationships(Person p) {
+        OrientGraph graph = factory.getTx();
+        Iterable<Edge> edges = graph.getEdges();
+        List<Person> rels = new ArrayList<Person>();
+        for (Edge e : edges) {
+            Object prop = e.getProperty("friendid");
+            System.out.println(prop.toString());
+            Person rp = findByOId(e.getProperty("friendid").toString());
+            rels.add(rp);
+        }
+        return rels;
+    }
 }
