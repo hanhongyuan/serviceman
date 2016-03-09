@@ -155,19 +155,43 @@ public class PersonRepository  {
     }
 
 
-    public boolean createKnows(Person p1, Person p2) {
+    public String createKnows(Person p1, Person p2) {
         OrientGraph graph = factory.getTx();
         try {
             Vertex v1 = graph.getVertex(p1.getId());
             Vertex v2 = graph.getVertex(p2.getId());
             Edge knowsEdge = graph.addEdge(null, v1, v2, "knows");
+            knowsEdge.setProperty("friendid", p2.getId());
             graph.commit();
-            return true;
+            return "Successfully created relationship";
+
         } catch (Exception e) {
             graph.rollback();
+            return "Failed to create relationship " + e.getMessage();
         } finally {
             graph.shutdown();
         }
-        return false;
+    }
+
+    public String breakKnows(Person p1, Person p2) {
+        OrientGraph graph = factory.getTx();
+        try {
+            Vertex v1 = graph.getVertex(p1.getId());
+            Vertex v2 = graph.getVertex(p2.getId());
+            Iterable<Edge> edges = graph.getEdges();
+            for (Edge e : edges) {
+                if (v2.getId().equals(e.getProperty("friendid"))) {
+                    graph.removeEdge(e);
+                }
+            }
+            graph.commit();
+            return "Successfully removed relationship";
+
+        } catch (Exception e) {
+            graph.rollback();
+            return "Failed to remove relationship " + e.getMessage();
+        } finally {
+            graph.shutdown();
+        }
     }
 }

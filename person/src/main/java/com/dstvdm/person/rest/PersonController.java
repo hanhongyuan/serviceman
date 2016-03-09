@@ -73,10 +73,17 @@ public class PersonController {
     }
 
     @RequestMapping(value = "/createKnows", method = RequestMethod.POST)
-    public boolean createKnows(@RequestBody Relationship rel) {
+    public String createKnows(@RequestBody Relationship rel) {
         Person p1 = repository.findByOId(rel.getId1());
         Person p2 = repository.findByOId(rel.getId2());
         return repository.createKnows(p1, p2);
+    }
+
+    @RequestMapping(value = "/breakKnows", method = RequestMethod.POST)
+    public String breakKnows(@RequestBody Relationship rel) {
+        Person p1 = repository.findByOId(rel.getId1());
+        Person p2 = repository.findByOId(rel.getId2());
+        return repository.breakKnows(p1, p2);
     }
 
 
