@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.orientechnologies.orient.core.annotation.OId;
 import com.orientechnologies.orient.core.annotation.OVersion;
 
+import javax.persistence.OneToMany;
 import java.net.URI;
 import java.net.URL;
 import java.util.List;
@@ -31,6 +32,7 @@ public class Person {
 
     private URI image;
 
+    @OneToMany
     private List<Person> knows;
 
     private int age;
