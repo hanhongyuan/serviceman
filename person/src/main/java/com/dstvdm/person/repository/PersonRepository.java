@@ -8,6 +8,7 @@ import com.dstvdm.person.model.Person;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.orientechnologies.orient.core.sql.OCommandSQL;
+import com.tinkerpop.blueprints.Edge;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
@@ -154,4 +155,19 @@ public class PersonRepository  {
     }
 
 
+    public boolean createKnows(Person p1, Person p2) {
+        OrientGraph graph = factory.getTx();
+        try {
+            Vertex v1 = graph.getVertex(p1.getId());
+            Vertex v2 = graph.getVertex(p2.getId());
+            Edge knowsEdge = graph.addEdge(null, v1, v2, "knows");
+            graph.commit();
+            return true;
+        } catch (Exception e) {
+            graph.rollback();
+        } finally {
+            graph.shutdown();
+        }
+        return false;
+    }
 }

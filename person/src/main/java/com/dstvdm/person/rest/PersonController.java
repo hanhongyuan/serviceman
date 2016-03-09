@@ -8,6 +8,7 @@ import com.dstvdm.person.exceptions.EmailAlreadyInUseException;
 import com.dstvdm.person.exceptions.NoChangesInRecordException;
 import com.dstvdm.person.exceptions.UnknownRecordExcepion;
 import com.dstvdm.person.model.Person;
+import com.dstvdm.person.model.Relationship;
 import com.dstvdm.person.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -69,6 +70,13 @@ public class PersonController {
             // update the record
             return repository.updatePerson(person);
         }
+    }
+
+    @RequestMapping(value = "/createKnows", method = RequestMethod.POST)
+    public boolean createKnows(@RequestBody Relationship rel) {
+        Person p1 = repository.findByOId(rel.getId1());
+        Person p2 = repository.findByOId(rel.getId2());
+        return repository.createKnows(p1, p2);
     }
 
 
