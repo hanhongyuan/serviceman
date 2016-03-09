@@ -6,8 +6,6 @@ import com.orientechnologies.orient.core.annotation.OId;
 import com.orientechnologies.orient.core.annotation.OVersion;
 
 import javax.persistence.OneToMany;
-import java.net.URI;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -30,14 +28,14 @@ public class Person {
 
     private String title;
 
-    private URI image;
+    private String image;
 
     @OneToMany
     private List<Person> knows;
 
     private int age;
 
-    private URL homepage;
+    private String homepage;
 
 
     public String getEmail() {
@@ -81,11 +79,11 @@ public class Person {
         this.title = title;
     }
 
-    public URI getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(URI image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
@@ -105,11 +103,48 @@ public class Person {
         this.age = age;
     }
 
-    public URL getHomepage() {
+    public String getHomepage() {
         return homepage;
     }
 
-    public void setHomepage(URL homepage) {
+    public void setHomepage(String homepage) {
         this.homepage = homepage;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        if (getAge() != person.getAge()) return false;
+        if (getId() != null ? !getId().equals(person.getId()) : person.getId() != null) return false;
+        if (version != null ? !version.equals(person.version) : person.version != null) return false;
+        if (getFirstName() != null ? !getFirstName().equals(person.getFirstName()) : person.getFirstName() != null)
+            return false;
+        if (getLastName() != null ? !getLastName().equals(person.getLastName()) : person.getLastName() != null)
+            return false;
+        if (getEmail() != null ? !getEmail().equals(person.getEmail()) : person.getEmail() != null) return false;
+        if (getTitle() != null ? !getTitle().equals(person.getTitle()) : person.getTitle() != null) return false;
+        if (getImage() != null ? !getImage().equals(person.getImage()) : person.getImage() != null) return false;
+        if (getKnows() != null ? !getKnows().equals(person.getKnows()) : person.getKnows() != null) return false;
+        return getHomepage() != null ? getHomepage().equals(person.getHomepage()) : person.getHomepage() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (version != null ? version.hashCode() : 0);
+        result = 31 * result + (getFirstName() != null ? getFirstName().hashCode() : 0);
+        result = 31 * result + (getLastName() != null ? getLastName().hashCode() : 0);
+        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
+        result = 31 * result + (getTitle() != null ? getTitle().hashCode() : 0);
+        result = 31 * result + (getImage() != null ? getImage().hashCode() : 0);
+        result = 31 * result + (getKnows() != null ? getKnows().hashCode() : 0);
+        result = 31 * result + getAge();
+        result = 31 * result + (getHomepage() != null ? getHomepage().hashCode() : 0);
+        return result;
     }
 }

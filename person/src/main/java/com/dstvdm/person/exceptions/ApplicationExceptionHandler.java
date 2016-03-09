@@ -1,4 +1,4 @@
-package com.dstvdm.person;
+package com.dstvdm.person.exceptions;
 
 /**
  * Created by pscot on 3/7/2016.

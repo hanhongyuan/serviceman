@@ -5,6 +5,9 @@ package com.dstvdm.person.repository;
  */
 
 import com.dstvdm.person.model.Person;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.orientechnologies.orient.core.sql.OCommandSQL;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.impls.orient.OrientGraph;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
@@ -54,8 +57,10 @@ public class PersonRepository  {
         List<Person> people = new ArrayList<Person>();
         OrientGraph graph = factory.getTx();
         for (Vertex v : graph.getVertices("firstName", firstName)) {
-            Person p = personTranslator(v);
+            Person p = null;
+            p = personTranslator(v);
             people.add(p);
+
         }
         graph.shutdown();
         return people;
@@ -65,8 +70,10 @@ public class PersonRepository  {
         List<Person> people = new ArrayList<Person>();
         OrientGraph graph = factory.getTx();
         for (Vertex v : graph.getVertices("email", email)) {
-            Person p = personTranslator(v);
+            Person p = null;
+            p = personTranslator(v);
             people.add(p);
+
         }
         graph.shutdown();
         return people;
@@ -76,8 +83,10 @@ public class PersonRepository  {
         List<Person> people = new ArrayList<Person>();
         OrientGraph graph = factory.getTx();
         for (Vertex v : graph.getVertices("lastName", lastName)) {
-            Person p = personTranslator(v);
+            Person p = null;
+            p = personTranslator(v);
             people.add(p);
+
         }
         graph.shutdown();
         return people;
@@ -87,11 +96,46 @@ public class PersonRepository  {
         List<Person> people = new ArrayList<Person>();
         OrientGraph graph = factory.getTx();
         for (Vertex v : graph.getVertices()) {
-            Person p = personTranslator(v);
+            Person p = null;
+            p = personTranslator(v);
             people.add(p);
+
         }
         graph.shutdown();
         return people;
+    }
+
+    public Person updatePerson(Person person) {
+        OrientGraph graph = factory.getTx();
+        String p = Jsonify(person);
+        String sqlcmd = "UPDATE Person merge " + p + " WHERE @rid = " + person.getId();
+        graph.getRawGraph().command(new OCommandSQL(sqlcmd)).execute();
+
+        // return a copy of the new record
+        return findByOId(person.getId());
+    }
+
+    private String Jsonify(Person person) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String data = mapper.writeValueAsString(person);
+            return data;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public Person findByOId(String id) {
+        OrientGraph graph = factory.getTx();
+        Vertex v = graph.getVertex(id);
+        if (v == null) {
+            return null;
+        }
+        Person p = personTranslator(v);
+        graph.shutdown();
+        return p;
     }
 
     private Person personTranslator(Vertex v) {
@@ -108,4 +152,6 @@ public class PersonRepository  {
 
         return p;
     }
+
+
 }

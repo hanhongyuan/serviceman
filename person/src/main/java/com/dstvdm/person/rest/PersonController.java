@@ -4,10 +4,16 @@ package com.dstvdm.person.rest;
  * Created by pscot on 3/7/2016.
  */
 
+import com.dstvdm.person.exceptions.EmailAlreadyInUseException;
+import com.dstvdm.person.exceptions.NoChangesInRecordException;
+import com.dstvdm.person.exceptions.UnknownRecordExcepion;
 import com.dstvdm.person.model.Person;
 import com.dstvdm.person.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -27,17 +33,18 @@ public class PersonController {
     }
 
     @RequestMapping("/findByFirstName")
-    public List<Person> findByFirstName(@RequestParam String firstName) {
+    public List<Person> findByFirstName(@RequestBody String firstName) {
         return repository.findByFirstName(firstName);
     }
 
     @RequestMapping("/findByLastName")
-    public List<Person> findByLastName(@RequestParam String lastName) {
+    public List<Person> findByLastName(@RequestBody String lastName) {
+
         return repository.findByLastName(lastName);
     }
 
     @RequestMapping("/findByEmail")
-    public List<Person> findByEmail(@RequestParam String email) {
+    public List<Person> findByEmail(@RequestBody String email) {
         return repository.findByEmailAddress(email);
     }
 
@@ -48,6 +55,20 @@ public class PersonController {
         if (repository.findByEmailAddress(email).isEmpty()) {
             return repository.addPerson(person);
         } else throw new EmailAlreadyInUseException();
+    }
+
+    @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+    public Person updateUser(@RequestBody Person person) {
+        String id = person.getId();
+        Person oldData = repository.findByOId(id);
+        if (oldData == null) {
+            throw new UnknownRecordExcepion();
+        } else if (oldData.equals(person)) {
+            throw new NoChangesInRecordException();
+        } else {
+            // update the record
+            return repository.updatePerson(person);
+        }
     }
 
 

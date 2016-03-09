@@ -1,12 +1,11 @@
-package com.dstvdm.person.rest;
+package com.dstvdm.person.exceptions;
 
-/**
- * Created by pscot on 3/7/2016.
- */
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Created by paul on 2016/03/09.
+ */
 @ResponseStatus(HttpStatus.PRECONDITION_FAILED)
-public class EmailAlreadyInUseException extends RuntimeException {
-
+public class NoChangesInRecordException extends RuntimeException {
 }
