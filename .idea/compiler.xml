@@ -26,6 +26,7 @@
         <module name="circuitbreaker" />
         <module name="configserver" />
         <module name="gateway" />
+        <module name="payu" />
         <module name="person" />
         <module name="registry" />
         <module name="serviceman" />

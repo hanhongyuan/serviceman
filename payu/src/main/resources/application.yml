@@ -9,6 +9,23 @@ endpoints:
   health:
     sensitive: false
 
+security:
+    basic:
+        enabled: false
+
+
+payu:
+  client:
+    posId: 145227
+    secondKey: 13a980d4f851f3d9a1cfc792fb1f5e50
+    clientSecret: 12f071174cb7eb79d4aac5bc2f07563f
+    accessTokenUri: https://secure.payu.com/pl/standard/user/oauth/authorize
+    authorizationUri: https://secure.payu.com/pl/standard/user/oauth/authorize
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    baseResourceUri: https://secure.payu.com/
 
 eureka:
   client:

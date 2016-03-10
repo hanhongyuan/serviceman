@@ -15,7 +15,6 @@ public class PersonApplication {
     public static void main(String... args) {
         new SpringApplicationBuilder()
                 .sources(PersonApplication.class)
-                .showBanner(false)
                 .run(args);
     }
 }
