@@ -25,6 +25,7 @@
         <module name="circuitbreaker" />
         <module name="configserver" />
         <module name="gateway" />
+        <module name="payu" />
         <module name="person" />
         <module name="registry" />
         <module name="serviceman" />
@@ -50,6 +51,7 @@
       <module name="consul-microservice" target="1.8" />
       <module name="consulservice" target="1.8" />
       <module name="gateway" target="1.8" />
+      <module name="payu" target="1.8" />
       <module name="person" target="1.8" />
       <module name="registry" target="1.8" />
       <module name="serviceman" target="1.8" />
