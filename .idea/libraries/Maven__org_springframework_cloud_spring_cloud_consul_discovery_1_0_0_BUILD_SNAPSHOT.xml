@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: org.springframework.cloud:spring-cloud-consul-discovery:1.0.0.BUILD-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-consul-discovery/1.0.0.BUILD-SNAPSHOT/spring-cloud-consul-discovery-1.0.0.BUILD-20160302.174844-133.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-consul-discovery/1.0.0.BUILD-SNAPSHOT/spring-cloud-consul-discovery-1.0.0.BUILD-20160309.122743-134.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-consul-discovery/1.0.0.BUILD-SNAPSHOT/spring-cloud-consul-discovery-1.0.0.BUILD-20160302.174844-133-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-consul-discovery/1.0.0.BUILD-SNAPSHOT/spring-cloud-consul-discovery-1.0.0.BUILD-20160309.122743-134-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-consul-discovery/1.0.0.BUILD-SNAPSHOT/spring-cloud-consul-discovery-1.0.0.BUILD-20160302.174844-133-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/cloud/spring-cloud-consul-discovery/1.0.0.BUILD-SNAPSHOT/spring-cloud-consul-discovery-1.0.0.BUILD-20160309.122743-134-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
