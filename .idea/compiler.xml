@@ -22,8 +22,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="admin" />
         <module name="payu" />
-        <module name="swagger" />
       </profile>
       <profile default="false" name="Annotation profile for consulservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -40,6 +40,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="admin" target="1.8" />
       <module name="auth" target="1.8" />
       <module name="circuitbreaker" target="1.8" />
       <module name="configserver" target="1.8" />
