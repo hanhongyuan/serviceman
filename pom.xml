@@ -23,6 +23,19 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<modules>
+		<module>person</module>
+		<module>registry</module>
+		<module>circuitbreaker</module>
+		<module>admin</module>
+		<module>configserver</module>
+		<module>gateway</module>
+		<module>payu</module>
+		<module>consulservice</module>
+		<module>auth</module>
+		<module>swagger</module>
+	</modules>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
