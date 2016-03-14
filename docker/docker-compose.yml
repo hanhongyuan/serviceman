@@ -1,8 +1,18 @@
+consul:
+  image: progrium/consul
+  command: -server -bootstrap -ui
+  ports:
+   - "8400:8400"
+   - "8500:8500"
+   - "8600:53/udp"
+
+
 consulservice:
   image: dstvdm/consulservice
   ports:
    - "8000:8000"
   links:
+   - consul
    - registry
 circuitbreaker:
   image: dstvdm/circuitbreaker

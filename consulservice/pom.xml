@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
     <groupId>com.dstvdm</groupId>
     <properties>
-        <docker.image.prefix>dstvdm</docker.image.prefix>
+        <docker.image.prefix>registry:5001/dstvdm</docker.image.prefix>
         <docker.plugin.version>0.3.258</docker.plugin.version>
     </properties>
     <dependencies>
