@@ -1,0 +1,56 @@
+circuitbreaker:
+  image: dstvdm/circuitbreaker
+  ports:
+   - "7979:7979"
+  links:
+   - gateway
+   - registry
+registry:
+  image: dstvdm/registry
+  ports:
+   - "8761:8761"
+configserver:
+  image: dstvdm/configserver
+  ports:
+   - "8888:8888"
+  links:
+   - registry
+gateway:
+  image: dstvdm/gateway
+  ports:
+   - "10000:10000"
+  links:
+   - registry
+   - configserver
+   - person
+   - auth
+   - payu
+   - admin
+person:
+  image: dstvdm/person
+  ports:
+   - "11000:11000"
+  links:
+   - registry
+   - configserver
+auth:
+  image: dstvdm/auth
+  ports:
+   - "12000:12000"
+  links:
+   - registry
+   - configserver
+payu:
+  image: dstvdm/payu
+  ports:
+   - "13000:13000"
+  links:
+   - registry
+   - configserver
+admin:
+  image: dstvdm/admin
+  ports:
+     - "14000:14000"
+  links:
+   - registry
+   - configserver
