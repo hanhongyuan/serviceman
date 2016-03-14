@@ -1,3 +1,9 @@
+consulservice:
+  image: dstvdm/consulservice
+  ports:
+   - "8000:8000"
+  links:
+   - registry
 circuitbreaker:
   image: dstvdm/circuitbreaker
   ports:
