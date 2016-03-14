@@ -25,16 +25,15 @@
 	</properties>
 
 	<modules>
-		<module>person</module>
-		<module>registry</module>
-		<module>circuitbreaker</module>
-		<module>admin</module>
-		<module>configserver</module>
-		<module>gateway</module>
-		<module>payu</module>
-		<module>consulservice</module>
-		<module>auth</module>
-		<module>swagger</module>
+        <module>registry</module>
+        <module>configserver</module>
+        <module>consulservice</module>
+        <module>circuitbreaker</module>
+        <module>auth</module>
+        <module>person</module>
+        <module>gateway</module>
+        <module>admin</module>
+        <module>payu</module>
 	</modules>
 
 	<dependencies>
