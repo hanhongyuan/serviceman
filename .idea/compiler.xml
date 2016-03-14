@@ -23,6 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="admin" />
+        <module name="payu" />
       </profile>
       <profile default="false" name="Annotation profile for consulservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />

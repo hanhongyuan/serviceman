@@ -30,6 +30,7 @@
 		<hazelcast.version>3.5.1</hazelcast.version>
 		<aspectj.version>1.8.6</aspectj.version>
 		<testng.version>6.8.21</testng.version>
+        <docker.image.prefix>dstvdm</docker.image.prefix>
 	</properties>
 
 	<dependencies>
