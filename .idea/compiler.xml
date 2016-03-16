@@ -23,6 +23,7 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="admin" />
+        <module name="imageindex" />
         <module name="payu" />
       </profile>
       <profile default="false" name="Annotation profile for consulservice" enabled="true">
@@ -47,6 +48,7 @@
       <module name="consul-microservice" target="1.8" />
       <module name="consulservice" target="1.8" />
       <module name="gateway" target="1.8" />
+      <module name="imageindex" target="1.8" />
       <module name="payu" target="1.8" />
       <module name="person" target="1.8" />
       <module name="registry" target="1.8" />

@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/configserver/configserver.iml" filepath="$PROJECT_DIR$/configserver/configserver.iml" />
       <module fileurl="file://$PROJECT_DIR$/consulservice/consul-microservice.iml" filepath="$PROJECT_DIR$/consulservice/consul-microservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/gateway/gateway.iml" filepath="$PROJECT_DIR$/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/imageindex/imageindex.iml" filepath="$PROJECT_DIR$/imageindex/imageindex.iml" />
       <module fileurl="file://$PROJECT_DIR$/payu/payu.iml" filepath="$PROJECT_DIR$/payu/payu.iml" />
       <module fileurl="file://$PROJECT_DIR$/person/person.iml" filepath="$PROJECT_DIR$/person/person.iml" />
       <module fileurl="file://$PROJECT_DIR$/registry/registry.iml" filepath="$PROJECT_DIR$/registry/registry.iml" />
