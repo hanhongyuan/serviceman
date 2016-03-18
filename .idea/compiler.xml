@@ -25,6 +25,7 @@
         <module name="admin" />
         <module name="imageindex" />
         <module name="payu" />
+        <module name="uploader" />
       </profile>
       <profile default="false" name="Annotation profile for consulservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -54,6 +55,7 @@
       <module name="registry" target="1.8" />
       <module name="serviceman" target="1.8" />
       <module name="swagger" target="1.8" />
+      <module name="uploader" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

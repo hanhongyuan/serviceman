@@ -8,6 +8,7 @@
       <list>
         <option value="$PROJECT_DIR$/admin/pom.xml" />
         <option value="$PROJECT_DIR$/imageindex/pom.xml" />
+        <option value="$PROJECT_DIR$/uploader/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

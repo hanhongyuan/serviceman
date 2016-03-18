@@ -4,11 +4,11 @@ package com.dstvdm.person.com.dstvdm.person.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**

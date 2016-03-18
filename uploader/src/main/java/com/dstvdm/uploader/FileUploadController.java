@@ -1,16 +1,15 @@
-package com.dstvdm.uploader.rest;
+package com.dstvdm.uploader;
 
 /**
  * Created by paul on 2016/03/18.
  */
 
-import com.dstvdm.uploader.UploaderApplication;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedOutputStream;
@@ -21,7 +20,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Controller
+@RestController
 @RequestMapping("/files")
 public class FileUploadController {
 
@@ -42,7 +41,7 @@ public class FileUploadController {
         return fileNames;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/uploadfile")
+    @RequestMapping(method = RequestMethod.POST, value = "/upload")
     public String handleFileUpload(@RequestParam("name") String name,
                                    @RequestParam("file") MultipartFile file) {
         if (name.contains("/")) {
