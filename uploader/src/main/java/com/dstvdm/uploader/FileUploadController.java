@@ -4,6 +4,11 @@ package com.dstvdm.uploader;
  * Created by paul on 2016/03/18.
  */
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -64,6 +70,27 @@ public class FileUploadController {
         } else {
             return "You failed to upload " + name + " because the file was empty";
         }
+    }
+
+    @RequestMapping(value = "/downloadFile", method = RequestMethod.GET)
+    public ResponseEntity<InputStreamResource> getFile(@RequestParam("filename") String name) {
+        try {
+            File fileToDownload = new File(UploaderApplication.ROOT + "/" + name);
+            // InputStream inputStream = new FileInputStream(fileToDownload);
+
+            HttpHeaders header = new HttpHeaders();
+            header.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            header.set("Content-Disposition", "attachment; filename=" + name);
+            header.setContentLength(fileToDownload.length());
+
+            InputStreamResource isr = new InputStreamResource(new FileInputStream(fileToDownload));
+            return new ResponseEntity<InputStreamResource>(isr, header, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+        return null;
     }
 
 }
