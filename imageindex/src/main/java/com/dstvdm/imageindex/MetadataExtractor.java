@@ -32,6 +32,9 @@ public class MetadataExtractor {
         this.file = file;
     }
 
+    public MetadataExtractor() {
+    }
+
     public MetadataExtractor(File file) {
         this.file = file;
     }
